@@ -1,0 +1,34 @@
+body{
+	margin:0;
+	padding:0;
+	text-align:center;
+	background-color:#cfafaf ;
+	font-family : sans-serif ;
+
+
+}
+
+.contact-title{
+	margin-top:100px;
+	color: #fff;
+	text-transform: uppercase;
+
+}
+
+.contact-title h1{
+	font-size: 32px;
+	line-height: 10px;
+}
+
+.contact-title h2{
+	font-size: 16px;
+}
+
+.form-control{
+	width:600px;
+	background-color: #eae3e0 ;
+	font-size: 18px;
+	margin-bottom: 16px;
+
+
+}
