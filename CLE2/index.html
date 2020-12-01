@@ -7,11 +7,14 @@
 <body>
 	<div class= "contact-title">
 		<h1>Thank you so much for making an appointment</h1>
-		<h2> keep in mind, big rona komt je pakken. Dus raag monkapje a bakfietskind </h2>
+		<h2> If you have any futher questions, feel free to leave a comment in the message box below.  </h2>
 	</div>
+
 
 	<div class= "contact-form">
 		<form id="contact-form" method="post" action="">
+			<h3>Contact information</h3>
+				<br>
 			<input type="text" name="first name" class="form-control" placeholder="First name" required>
 				<br>
 			<input type="text" name="last name" class="form-control" placeholder="Last name" required>	
@@ -23,45 +26,39 @@
 			<textarea name="message" class="form-control" placeholder="message">
 			</textarea>
 				<br>
-			<input type="submit" class="form-control" value="SUBMIT">
-		</form>
-	</div>
-
-	<div class= "weekdays">
-		<h3>Pick the date</h3>
-		<form>
+			<h3>Pick the date</h3>
+				<br>
 			<label for="1"> Monday </label>
-			<input type="radio" name="monday" value="1" id="1">
+			<input type="radio" name="dag" value="1" id="1">
 				<br>
 			<label for="2"> Wednesday </label>
-			<input type="radio" name="monday" value="2" id="2">
+			<input type="radio" name="dag" value="2" id="2">
 				<br>
 			<label for="3"> Saturday </label>
-			<input type="radio" name="monday" value="3" id="3">
+			<input type="radio" name="dag" value="3" id="3">
 				<br>
 			<label for="3"> Sunday </label>
-			<input type="radio" name="monday" value="3" id="3">
+			<input type="radio" name="dag" value="3" id="3">
 				<br>
-			<input type="submit" value="SUBMIT">
-		</form>
-	</div>
-
-	<div class= "timechart">
-		<h3>pick the time</h3>
-		<form>
-			<label for="1"> 10:00-10:15 </label>
-			<input type="radio" name="monday" value="1" id="1">
+			<h3>pick the time</h3>
+				<br>
+			<label for="ochtend"> 10:00-10:15 </label>
+			<input type="radio" name="tijd" value="1" id="a">
 				<br>
 			<label for="2"> 14:00-14:15 </label>
-			<input type="radio" name="monday" value="2" id="2">
+			<input type="radio" name="tijd" value="2" id="b">
 				<br>
 			<label for="3"> 20:00-20:15 </label>
-			<input type="radio" name="monday" value="3" id="3">
+			<input type="radio" name="tijd" value="3" id="c">
 				<br>
-			<input type="submit" value="SUBMIT">
+
+			<input id="submit" type="submit" value="SUBMIT">
 		</form>
 	</div>
 
 <!-- je moet het PHP bestand in action="" plakken-->
+
+	<script src="myscripts.js">
+	</script>
 </body>
 </html>

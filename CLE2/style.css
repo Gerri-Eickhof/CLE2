@@ -2,7 +2,7 @@ body{
 	margin:0;
 	padding:0;
 	text-align:center;
-	background-color:#cfafaf ;
+	background-color:#eae3e0 ;
 	font-family : sans-serif ;
 
 
@@ -10,9 +10,9 @@ body{
 
 .contact-title{
 	margin-top:100px;
+	margin-bottom: 50px;
 	color: #fff;
 	text-transform: uppercase;
-
 }
 
 .contact-title h1{
@@ -24,14 +24,29 @@ body{
 	font-size: 16px;
 }
 
+.contact-form{
+	padding:20px;
+	background-color: #cfafaf ;
+}
+
 .form-control{
 	width:600px;
 	background-color: #eae3e0 ;
 	font-size: 18px;
 	margin-bottom: 16px;
-
-
 }
+
+#contact-form{
+	background-color: #cfafaf
+	padding-top:20px;
+}
+
+#submit{
+	margin-top:50px;
+	padding: 20px;
+	background-color: #eae3e0 ;
+	cursor:pointer;
+} 
 
 h3{
 	color: #fff;
