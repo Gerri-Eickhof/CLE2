@@ -4,13 +4,19 @@ $conn = OpenCon();
 
 $firstName = $_POST['firstName'];
 $lastName = $_POST['lastName'];
-$email = $_POST['email'];
+$email = $_POST['emailAdress'];
+$phone = $_POST['phoneNumber'];
+$date = $_POST['date'];
+$time = $_POST['time'];
+
 if (isset($_POST['submit'])) {
-    echo 'deez nuts';
-    $sql = "INSERT INTO test(firstName, lastName, mail) VALUES('$firstName', '$lastName', '$email')";
-    if (mysqli_query($conn, $sql)) {
-        echo "Records added succesfully";
-    } else {
+    $sql = "INSERT INTO test(firstName, lastName, mail, phoneNumber, appDate, appTime) VALUES('$firstName', '$lastName', '$email', '$phone', '$date', '$time')";
+    if (!mysqli_query($conn, $sql)) {
         echo "Error, could not execute" . mysqli_error($conn);
-    }
-}
+}}
+?>
+<html>
+<script type="text/javascript">
+window.location = "https://your-secondhand.com/";
+</script>
+</html>
