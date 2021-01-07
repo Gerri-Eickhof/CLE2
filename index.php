@@ -1,8 +1,11 @@
 <?php
-include 'Swebtite.php';
-$conn = OpenCon();
+include 'config.php';
+require "common.php";
 
-closeCon($conn);
+if (isset($_POST['submit'])) {
+    if (!hash_equals($_SESSION['csrf'], $_POST['csrf'])) die(); }
+
+$conn = new PDO($dsn, "$dataUser", "$dataPass", $options);
 ?>
 
 <html lang="en">
@@ -18,7 +21,8 @@ closeCon($conn);
 
 
 	<div class= "contact-form">
-		<form id="contact-form" method="post" action="insert.php">
+
+		<form id="contact-form" method="post" action="create.php">
 			<h3>Contact information</h3>
 				<br>
 			<input type="text" name="firstName" class="form-control" placeholder="First name" required>
@@ -29,7 +33,7 @@ closeCon($conn);
 				<br>
 			<input type="text" name="phoneNumber" class="form-control" placeholder="Phone number" >
 				<br>
-			<textarea name="message" class="form-control" placeholder="message">
+			<textarea type="text" name="message" class="form-control" placeholder="Message">
 			</textarea>
 				<br>
 			<h3>Pick the date</h3>
@@ -55,7 +59,13 @@ closeCon($conn);
 				<br>
 
             <input id="submit" type="submit" name="submit" value="SUBMIT">
+            <input name="csrf" type="hidden" value="<?php echo escape($_SESSION['csrf']); ?>">
 		</form>
 	</div>
+    <ul>
+        <li><a href="read.php"><strong>Read</strong></a> - Find Appointments</li>
+        <li><a href="update.php"><strong>Update</strong></a> - Edit Appointments</li>
+        <li><a href="delete.php"><strong>Delete</strong></a> - delete a user</li>
+    </ul>
 </body>
 </html>
