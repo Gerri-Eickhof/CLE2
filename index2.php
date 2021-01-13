@@ -7,93 +7,77 @@ if (isset($_POST['submit'])) {
 
 $conn = new PDO($dsn, "$dataUser", "$dataPass", $options);
 
+// Set your timezone
+date_default_timezone_set('Asia/Tokyo');
 
-function build_calendar($month, $year){
+// Get prev & next month
+if (isset($_GET['ym'])) {
+    $ym = $_GET['ym'];
+} else {
+    // This month
+    $ym = date('Y-m');
+}
+
+// Check format
+$timestamp = strtotime($ym . '-01');
+if ($timestamp === false) {
+    $ym = date('Y-m');
+    $timestamp = strtotime($ym . '-01');
+}
+
+// Today
+$today = date('Y-m-j', time());
+
+// For H3 title
+$html_title = date('Y / m', $timestamp);
+
+// Create prev & next month link     mktime(hour,minute,second,month,day,year)
+$prev = date('Y-m', mktime(0, 0, 0, date('m', $timestamp)-1, 1, date('Y', $timestamp)));
+$next = date('Y-m', mktime(0, 0, 0, date('m', $timestamp)+1, 1, date('Y', $timestamp)));
+// You can also use strtotime!
+// $prev = date('Y-m', strtotime('-1 month', $timestamp));
+// $next = date('Y-m', strtotime('+1 month', $timestamp));
+
+// Number of days in the month
+$day_count = date('t', $timestamp);
+
+// 0:Sun 1:Mon 2:Tue ...
+$str = date('w', mktime(0, 0, 0, date('m', $timestamp), 1, date('Y', $timestamp)));
+//$str = date('w', $timestamp);
 
 
-    $daysOfWeek = array('Zondag','Maandag', 'Dinsdag', 'Woensdag', 'Donderdag', 'Vrijdag', 'Zaterdag');
+// Create Calendar!!
+$weeks = array();
+$week = '';
 
-    $firstDayOfMonth = mktime(0,0,0, $month, 1, $year);
+// Add empty cell
+$week .= str_repeat('<td></td>', $str);
 
-    $numberDays = date('t',$firstDayOfMonth);
+for ( $day = 1; $day <= $day_count; $day++, $str++) {
 
-    $dateComponents = getdate($firstDayOfMonth);
+    $date = $ym . '-' . $day;
 
-    $monthName = $dateComponents['month'];
-
-    $dayOfWeek = $dateComponents['wday'];
-
-    $dateToday = date('Y-m-d');
-
-    $calendar= "<table class='table table-bordered'>";
-
-    $calendar .="<center><h2>$monthName $year</h2>";
-
-    $calendar.="<a class='btn btn-xs btn-primary' href='?month=".date('m', mktime(0,0, 0, $month-1, 1, $year)).
-        "&year=".date('Y', mktime(0,0, 0, $month-1, 1, $year))."'>Vorige Maand</a>";
-
-    $calendar.="<a class='btn btn-xs btn-primary' href='?month=".date('m')."&year=".date('Y')."'>Deze Maand</a>";
-
-    $calendar.="<a class='btn btn-xs btn-primary' href='?month=".date('m', mktime(0,0, 0, $month+1, 1, $year))."&year=".date('Y', mktime(0,0, 0, $month+1, 1, $year))."'>Volgende Maand</a></center><br>";
-
-    $calendar.="<tr>";
-
-    foreach($daysOfWeek as $day){
-        $calendar.="<th class='header'>$day</th>";
+    if ($today == $date) {
+        $week .= '<td class="today">' . $day;
+    } else {
+        $week .= '<td>' . $day;
     }
-    $calendar.= "</tr><tr>";
+    $week .= '</td>';
 
-    if($dayOfWeek > 0) {
-        for($k=0;$k<$dayOfWeek;$k++){
-            $calendar.="<td></td>";
-        }
-    }
+// End of the week OR End of the month
+    if ($str % 7 == 6 || $day == $day_count) {
 
-    $currentDay = 1;
-
-    // Krijgen van het nummer van de maand.
-    $month = str_pad($month, 2, '0', STR_PAD_LEFT);
-    while($currentDay <= $numberDays){
-
-        if($dayOfWeek == 7){
-            $dayOfWeek = 0;
-            $calendar.="</tr><tr>";
-        }
-
-        $currentDayRel = str_pad($currentDay, 2, "0", STR_PAD_LEFT);
-        $date = "$year-$month-$currentDayRel";
-
-        $dayName = strtolower(date('l', strtotime($date)));
-        $eventNum = 0;
-        $today = $date==date('Y-m-d')? "today" : "";
-
-        if($date<date('Y-m-d')){
-            $calendar.="<td><h4>$currentDay</h4> <button class='btn btn-danger btn-xs'>Niet Beschikbaar</button>";
-        }elseif(in_array($date, $bookings)){
-            $calendar.="<td class='$today'><h4>$currentDay</h4> <button class='btn btn-danger btn-xs'>Vol Geboekt</button>";
-        }else{
-            $calendar.="<td class='$today'><h4>$currentDay</h4> <a href='reserveer.php?date=".$date."' class='btn btn-success btn-xs'>Reserveer</a>";
-
+        if ($day == $day_count) {
+// Add empty cell
+            $week .= str_repeat('<td></td>', 6 - ($str % 7));
         }
 
-        $calendar.="</td>";
+        $weeks[] = '<tr>' . $week . '</tr>';
 
-        // Hiermee verhoog ik de tellers.
-        $currentDay++;
-        $dayOfWeek++;
+// Prepare for new week
+        $week = '';
     }
 
-    if($dayOfWeek !=7){
-        $remainingDays = 7-$dayOfWeek;
-        for($i=0;$i<$remainingDays;$i++){
-            $calendar.="<td></td>";
-        }
-    }
-
-    $calendar.="</tr>";
-    $calendar.="</table>";
-
-    echo $calendar;
 }
 ?>
 
@@ -130,15 +114,24 @@ function build_calendar($month, $year){
                 <input type="text" name="message" class="form-control" placeholder="Message">
             </div>
             <div class="box9">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <?php
-                            $dateComponents = getdate();
-                            $month = $_GET['month'];
-                            $year = $_GET['year'];
-                            echo build_calendar($month, $year);
-                            ?>
-                        </div>
+                <div class="container">
+                    <h3><a href="?ym=<?php echo $prev; ?>">&lt;</a> <?php echo $html_title; ?> <a href="?ym=<?php echo $next; ?>">&gt;</a></h3>
+                    <table class="table table-bordered">
+                        <tr>
+                            <th>S</th>
+                            <th>M</th>
+                            <th>T</th>
+                            <th>W</th>
+                            <th>T</th>
+                            <th>F</th>
+                            <th>S</th>
+                        </tr>
+                        <?php
+                        foreach ($weeks as $week) {
+                            echo $week;
+                        }
+                        ?>
+                    </table>
                 </div>
             </div>
             <div class="box10">
