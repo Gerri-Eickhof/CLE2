@@ -8,7 +8,7 @@ if (isset($_POST['submit'])) {
 $conn = new PDO($dsn, "$dataUser", "$dataPass", $options);
 
 // Set your timezone
-date_default_timezone_set('Asia/Tokyo');
+date_default_timezone_set('Europe/Amsterdam');
 
 // Get prev & next month
 if (isset($_GET['ym'])) {
