@@ -90,7 +90,7 @@ for ( $day = 1; $day <= $day_count; $day++, $str++) {
     <form id="contact-form" method="post" action="create.php">
         <div id="content">
             <div class="box1">
-                <img id="logo" src="img/logo.png" width="80" height="80">
+                <img id="logo" src="img/logo.png">
             </div>
             <div class="box2">
                 <h1>Create appointment</h1>
@@ -141,24 +141,24 @@ for ( $day = 1; $day <= $day_count; $day++, $str++) {
                 <input id="submit" type="submit" name="submit" value="SUBMIT APPOINTMENT">
                 <input name="csrf" type="hidden" value="<?php echo escape($_SESSION['csrf']); ?>">
             </div>
-            <div class="box12">
-                    <li class="site-footer__linklist-item h6">
-                        <a href="https://your-secondhand.com/search"><strong>SEARCH</strong></a>
-                    </li>
-
-                    <li class="site-footer__linklist-item h6">
-                        <a href="https://your-secondhand.com/pages/about"><strong>ABOUT US</strong></a>
-                    </li>
-
-                    <li class="site-footer__linklist-item h6">
-                        <a href="https://your-secondhand.com/pages/return-of-items"><strong>RETURN OF ITEMS</strong></a>
-                    </li>
-
-                    <li class="site-footer__linklist-item h6">
-                        <a href="https://your-secondhand.com/blogs/nieuws"><strong>NEWS</strong></a>
-                    </li>
-            </div>
         </div>
     </form>
+    <footer>
+        <li class="site-footer__linklist-item h6">
+            <a href="https://your-secondhand.com/search"><strong>SEARCH</strong></a>
+        </li>
+
+        <li class="site-footer__linklist-item h6">
+            <a href="https://your-secondhand.com/pages/about"><strong>ABOUT US</strong></a>
+        </li>
+
+        <li class="site-footer__linklist-item h6">
+            <a href="https://your-secondhand.com/pages/return-of-items"><strong>RETURN OF ITEMS</strong></a>
+        </li>
+
+        <li class="site-footer__linklist-item h6">
+            <a href="https://your-secondhand.com/blogs/nieuws"><strong>NEWS</strong></a>
+        </li>
+    </footer>
 </body>
 </html>
