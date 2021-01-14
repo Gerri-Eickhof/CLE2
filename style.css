@@ -3,15 +3,31 @@ body {
     margin:0;
     background-color: #eae3e0;
 }
-/*
+/*styling van de header inhoud*/
+#logo {
+    max-width: 100%;
+    max-height: 100%;
+}
+/*opmaak voor duidelijke vakverdeling cssgrid
 #content div{
     background: #D3D3D3;
 }
-
 #content div:nth-child(even){
     background: #808080;
 }
 */
+
+/*
+th:nth-of-type(1), td:nth-of-type(1) {
+    color: red;
+}
+
+th:nth-of-type(7), td:nth-of-type(7) {
+    color: blue;
+}
+*/
+
+/*dit is de styling voor de css grid*/
 #content{
     display:grid;
     grid-template-columns:(5 1fr);
@@ -27,6 +43,9 @@ body {
     text-align:center;
     vertical-align:middle;
     display:table-cell;
+    height:60px;
+    padding-top:20px;
+    padding-bottom:20px
 }
 
 .box2{
@@ -50,6 +69,7 @@ body {
     grid-row: 3;
     text-align:center;
     height:80px;
+    padding-right:20px;
 }
 
 .box5{
@@ -57,6 +77,7 @@ body {
     grid-row: 3;
     text-align:center;
     height:80px;
+    padding-right:20px;
 }
 
 .box6{
@@ -64,6 +85,7 @@ body {
     grid-row: 4;
     text-align:center;
     height:80px;
+    padding-right:20px;
 }
 
 .box7{
@@ -71,6 +93,7 @@ body {
     grid-row: 5;
     text-align:center;
     height:300px;
+    padding-right:20px;
 }
 
 .box8{
@@ -78,12 +101,14 @@ body {
     grid-row: 5;
     text-align:center;
     height:300px;
+    padding-right:20px;
 }
 
 .box9{
     grid-column:3/5;
     grid-row: 3/6;
     text-align:center;
+
 }
 
 .box10{
@@ -95,25 +120,6 @@ body {
 .box11{
     grid-column:3/5;
     grid-row: 6;
-
-}
-
-.box12 {
-    grid-column: 1/5;
-    grid-row: 7;
-    background-color:#eae7e0;
-    text-align:center;
-    bottom:0;
-    padding-top:100px;
-    padding-bottom:100px;
-}
-
-.box12 li{
-    display:inline;
-    text-align:center;
-    width: 100%;
-    padding:40px;
-    bottom:0;
 }
 
 a{
@@ -125,6 +131,7 @@ a:hover {
 opacity: 60%;
 }
 
+/*dit is de submit button*/
 #submit{
     background-color: #cfafaf ;
     cursor:pointer;
@@ -136,6 +143,7 @@ opacity: 60%;
     width:720px;
 }
 
+/*dit zijn de input velden voor name, lastname, email, phone number, message etc*/
 input{
     font-size: 1.4rem;
     line-height: 1.71429;
@@ -150,23 +158,34 @@ input{
     color: #4a4a4a;
 }
 
-h1{
-    font-family: "Monotype Baskerville",serif;
+/*Hieronder is de styling voor verschillende Headings*/
+h1 {
+    font-family: "Monotype Baskerville", serif;
     font-style: normal;
     font-weight: 400;
 }
 
-/*alles hieronder is van de kalender*/
+h2{
+    font-family: "Monotype Baskerville",serif;
+    color: #4a4a4a;
+}
+
+a{
+    color:#4a4a4a;
+    text-decoration:none;
+}
+
+a:hover {
+    opacity: 60%;
+}
+
+/*Hieronder is de styling van de Calendar*/
 .container {
     font-family: "Monotype Baskerville",serif;
     color:#000;
     background-color: #cfafaf;
     width:720px;
-}
-
-
-h3 {
-    margin-bottom: 30px;
+    padding-left:0px;
 }
 
 th {
@@ -184,15 +203,22 @@ td {
 .today {
     background-color: #cfafaf;
 }
-/*
-th:nth-of-type(1), td:nth-of-type(1) {
-    color: red;
+/*stylen van footer*/
+footer{
+    text-align:center;
+    background-color:#eae7e0;
+}
+footer li{
+    display:inline-block;
+    padding:40px
 }
 
-th:nth-of-type(7), td:nth-of-type(7) {
-    color: blue;
-}
-*/
+
+
+
+
+
+
 
 
 
