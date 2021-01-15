@@ -141,6 +141,7 @@ opacity: 60%;
     border: none;
     margin-left:0px;
     width:720px;
+    margin-left:15px;
 }
 
 /*dit zijn de input velden voor name, lastname, email, phone number, message etc*/
@@ -185,7 +186,7 @@ a:hover {
     color:#000;
     background-color: #cfafaf;
     width:720px;
-    padding-left:0px;
+    padding-left:15px;
 }
 
 th {
