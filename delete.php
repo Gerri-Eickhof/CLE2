@@ -38,7 +38,12 @@ try {
     echo $sql . "<br>" . $error->getMessage();
 }
 ?>
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>delete-page</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
 <h2>Update users</h2>
 
 <table>
