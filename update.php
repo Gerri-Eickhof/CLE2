@@ -19,7 +19,12 @@ $result = $statement->fetchAll();
 echo $sql . "<br>" . $error->getMessage();
 }
 ?>
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>update-page</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
 <h2>Update users</h2>
 
 <table>
@@ -53,3 +58,4 @@ echo $sql . "<br>" . $error->getMessage();
 </table>
 
 <a href="index.php">Back to home</a>
+
