@@ -1,33 +1,40 @@
 <?php
 include 'config.php';
 require "common.php";
-$conn = new PDO($dsn, "$dataUser", "$dataPass", $options);
+if(!isset($_SESSION))
+    {
+        session_start();
+    }
+
+$conn = openCon();
 
 if (isset($_POST['submit'])) {
-    if (!hash_equals($_SESSION['csrf'], $_POST['csrf'])) die(); }
 
-$new_app = array(
-        "firstName" => $_POST['firstName'],
-        "lastName" => $_POST['lastName'],
-        "mail" => $_POST['emailAdress'],
-        "phoneNumber" => $_POST['phoneNumber'],
-        "appDate" => $_POST['date'],
-        "appTime" =>$_POST['time'],
-        "msG" => $_POST['message'],
-);
 
-$sql = sprintf(
-    "INSERT INTO %s (%s) values (%s)",
-    "test",
-    implode(", ", array_keys($new_app)),
-    ":" . implode(", :", array_keys($new_app))
-);
+    if (empty($errors)) {
+        $firstName = $_POST['firstName'];
+        $lastName = $_POST['lastName'];
+        $email = $_POST['emailAdress'];
+        $phone = $_POST['phoneNumber'];
+        $message = $_POST['message'];
+        $date1 = strtotime($_POST["date"]);
+        $date1 = date('Y-m-d', $date1);
+        $appTime = $_POST['time'];
 
-$statement = $conn->prepare($sql);
-$statement->execute($new_app);
+        require_once "form-validation.php";
 
-if (isset($_POST['submit']) && $statement){
-echo escape($_POST['firstName']) . " successfully added.";
+        $sql = "INSERT INTO test
+                    (firstName, lastName, mail, phoneNumber, msG, appDate, appTime)
+                    VALUES ('$firstName', '$lastName', '$email', '$phone', '$message', '$date1', '$appTime')";
+        $result = mysqli_query($conn, $sql) or die ('Error: ' . $sql . '<br>' . mysqli_error($conn));
+
+        if ($result) {
+            header('Location: index.php');
+            exit;
+        } else {
+            $errors[] = 'Something went wrong in your database query: ' . mysqli_error($conn);
+        }
+    }
 }
 //if (isset($_POST['submit'])) {
     //$sql = "INSERT INTO test(firstName, lastName, mail, phoneNumber, appDate, appTime, msG) VALUES('$firstName', '$lastName', '$email', '$phone', '$date', '$time', '$message')";
