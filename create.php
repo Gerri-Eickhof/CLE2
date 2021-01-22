@@ -1,7 +1,7 @@
 <?php
-include 'config.php';
-require "common.php";
-
+include 'includes/config.php';
+require "includes/common.php";
+require_once "php-mailer.php";
 //Checks if there is a session, if not, starts one.
 if (!isset($_SESSION)) {
     session_start();
@@ -34,7 +34,8 @@ if (isset($_POST['submit'])) {
 
         //Sends you back to index after putting values into database.
         if ($result) {
-            header('Location: index.php');
+            sentMail();
+            //header('Location: index.php');
             exit;
         } else {
             $errors[] = 'Something went wrong in your database query: ' . mysqli_error($conn);

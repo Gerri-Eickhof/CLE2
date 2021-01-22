@@ -1,5 +1,5 @@
 <?php
-include "config.php";
+include "includes/config.php";
 $conn = openCon();
 session_start();
 
@@ -50,7 +50,7 @@ if (isset($_POST['submit'])) {
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="includes/style.css">
     <title>Document</title>
 </head>
 <body>

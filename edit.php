@@ -12,7 +12,7 @@ if (!isset($_SESSION['loggedInUser'])) {
     exit;
 }
 
-require "config.php";
+require "includes/config.php";
 
 //Opens connection to DB
 $conn = openCon();
@@ -75,7 +75,7 @@ mysqli_close($conn);
 <head>
     <title>Music Collection Edit</title>
     <meta charset="utf-8"/>
-    <link rel="stylesheet" type="text/css" href="style.css"/>
+    <link rel="stylesheet" type="text/css" href="includes/style.css"/>
 </head>
 <body>
 <h1>Edit Appointment</h1>
@@ -123,7 +123,7 @@ mysqli_close($conn);
 <div>
     <a href="index.php">Go back to the list</a>
 </div>
-<script type="text/javascript" src="myscript.js"></script>
+<script type="text/javascript" src="includes/myscript.js"></script>
 
 </body>
 </html>

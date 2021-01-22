@@ -10,8 +10,8 @@ if (!isset($_SESSION['loggedInUser'])) {
     exit;
 }
 
-require "config.php";
-require "common.php";
+require "includes/config.php";
+require "includes/common.php";
 
 //Checks if CSRF key is set
 if (isset($_POST['submit'])) {
@@ -31,7 +31,7 @@ $result = mysqli_query($conn, $sql) or die ('Error: ' . $sql . '<br>' . mysqli_e
 <html lang="en">
 <head>
     <title>update-page</title>
-    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="includes/style.css">
 </head>
 <h2 class="centerhead">Update users</h2><br><br>
 <form>

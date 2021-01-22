@@ -2,8 +2,8 @@
 //Starts new session
 session_start();
 
-require "config.php";
-require "common.php";
+require "includes/config.php";
+require "includes/common.php";
 
 //Checks if user is logged in, if not, sends back to index.
 if (!isset($_SESSION['loggedInUser'])) {
@@ -45,7 +45,7 @@ try {
 <html lang="en">
 <head>
     <title>delete-page</title>
-    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="includes/style.css">
 </head>
 <h2 class="centerhead">Delete users</h2><br><br>
 

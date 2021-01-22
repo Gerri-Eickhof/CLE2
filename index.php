@@ -1,6 +1,6 @@
 <?php
-include 'config.php';
-require "common.php";
+include 'includes/config.php';
+require "includes/common.php";
 
 session_start();
 
@@ -15,7 +15,7 @@ $conn = openCon();
 <html lang="en">
 <head>
     <title>Reservering</title>
-    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="includes/style.css">
 </head>
 <body>
 <form id="contact-form" method="post" action="create.php">
@@ -97,6 +97,6 @@ $conn = openCon();
         <?php endif; ?>
     </li>
 </footer>
-<script type="text/javascript" src="myscript.js"></script>
+<script type="text/javascript" src="includes/myscript.js"></script>
 </body>
 </html>

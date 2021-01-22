@@ -1,6 +1,6 @@
 <?php
 session_start();
-include "config.php";
+include "includes/config.php";
 $conn = openCon();
 
 //Check if user is logged in, else move to secure page
@@ -49,7 +49,7 @@ if (isset($_POST['submit'])) {
 <head>
     <title>Music Collection Login</title>
     <meta charset="utf-8"/>
-    <link rel="stylesheet" type="text/css" href="style.css"/>
+    <link rel="stylesheet" type="text/css" href="includes/style.css"/>
 </head>
 <body>
 <h1>Login</h1>
