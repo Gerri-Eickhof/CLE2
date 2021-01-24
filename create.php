@@ -10,6 +10,8 @@ if (!isset($_SESSION)) {
 //Opens connection to database
 $conn = openCon();
 
+// BB gesprek
+
 //Checks if there is data submitted, starts the updating process.
 if (isset($_POST['submit'])) {
 
@@ -31,10 +33,10 @@ if (isset($_POST['submit'])) {
                   (firstName, lastName, mail, phoneNumber, msG, appDate, appTime)
                   VALUES ('$firstName', '$lastName', '$email', '$phone', '$message', '$date1', '$appTime')";
         $result = mysqli_query($conn, $sql) or die ('Error: ' . $sql . '<br>' . mysqli_error($conn));
+        sentMail();
 
         //Sends you back to index after putting values into database.
         if ($result) {
-            sentMail();
             //header('Location: index.php');
             exit;
         } else {

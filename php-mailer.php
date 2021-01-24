@@ -13,16 +13,16 @@ require 'PHPMailer/src/SMTP.php';
 
 function sentMail() {
         //making variables of the checked input
-        $firstname  = mysqli_escape_string($GLOBALS['conn'], $_POST['firstname']);
-        $lastname   = mysqli_escape_string($GLOBALS['conn'], $_POST['lastname']);
-        $email      = mysqli_escape_string($GLOBALS['conn'], $_POST['mail']);
+        $firstname  = mysqli_escape_string($GLOBALS['conn'], $_POST['firstName']);
+        $lastname   = mysqli_escape_string($GLOBALS['conn'], $_POST['lastName']);
+        $email      = mysqli_escape_string($GLOBALS['conn'], $_POST['emailAdress']);
         $phone      = mysqli_escape_string($GLOBALS['conn'], $_POST['phoneNumber']);
-        $date       = mysqli_escape_string($GLOBALS['conn'], $_POST['appDate']);
-        $time       = mysqli_escape_string($GLOBALS['conn'], $_POST['appTime']);
+        $date       = mysqli_escape_string($GLOBALS['conn'], $_POST['date']);
+        $time       = mysqli_escape_string($GLOBALS['conn'], $_POST['time']);
 
         echo $firstname . $lastname . $email;
         //Require the form validation handling
-        require_once "form-validation.php";
+        require_once "includes/form-validation.php";
 
         //Variables from form to variables in this file
         //    if (empty($errors)) {
@@ -38,8 +38,15 @@ function sentMail() {
             $mail->Port = 587;
             $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
             $mail->SMTPAuth = true;
+            $mail->SMTPOptions = array(
+                'ssl' => array(
+                    'verify_peer' => false,
+                    'verify_peer_name' => false,
+                    'allow_self_signed' => true
+                )
+            );
             $mail->Username = 'indihelene@gmail.com';
-            $mail->Password = 'kankerhoer';
+            $mail->Password = 'bigchungus13';
 
             // mail from, where to and reply email (cc and bcc can be used when removing //
             $mail->setFrom('indihelen@gmail.com');
@@ -61,6 +68,6 @@ function sentMail() {
             // redirecting back to previous page
         } catch (Exception $exception) {
             // error message in case something went wrong
-            // echo "Error:" . $mail->ErrorInfo;
+             echo "Error:" . $mail->ErrorInfo;
         }
 }
