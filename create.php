@@ -19,14 +19,22 @@ if (isset($_POST['submit'])) {
     if (empty($errors)) {
 
         //Makes a new array with the posted information.
-        $firstName = $_POST['firstName'];
-        $lastName = $_POST['lastName'];
-        $email = $_POST['emailAdress'];
-        $phone = $_POST['phoneNumber'];
-        $message = $_POST['message'];
-        $date1 = strtotime($_POST["date"]);
+        $firstName = htmlspecialchars($_POST['firstName']);
+        $firstName = mysqli_escape_string($conn, trim($firstName));
+        $lastName = htmlspecialchars($_POST['lastName']);
+        $lastname = mysqli_real_escape_string($conn, trim($lastName));
+        $email = htmlspecialchars($_POST['emailAdress']);
+        $email = mysqli_real_escape_string($conn, trim($email));
+        $phone = htmlspecialchars($_POST['phoneNumber']);
+        $phone = mysqli_real_escape_string($conn, trim($phone));
+        $message = htmlspecialchars($_POST['message']);
+        $message = mysqli_real_escape_string($conn, trim($message));
+        $date1 = htmlspecialchars($_POST['date']);
+        $date1 = mysqli_real_escape_string($conn, trim($date1));
+        $date1 = strtotime($date1);
         $date1 = date('Y-m-d', $date1);
-        $appTime = $_POST['time'];
+        $appTime = htmlspecialchars($_POST['time']);
+        $time = mysqli_real_escape_string($conn, trim($appTime));
 
         //Adds array to database.
         $sql = "INSERT INTO test
