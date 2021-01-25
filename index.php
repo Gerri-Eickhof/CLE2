@@ -30,15 +30,15 @@ $conn = openCon();
             <img id="img" src="img/2.png" width="533,6" height="262,9">
         </div>
         <div class="box4">
-            <input type="text" name="firstName" class="form-control" placeholder="First name" required>
+            <input type="text" name="firstName" class="form-control" placeholder="First name" >
             <span class><?= isset($errors['firstName'])?$errors['firstName'] : ''?></span>
         </div>
         <div class="box5">
-            <input type="text" name="lastName" class="form-control" placeholder="Last name" required>
+            <input type="text" name="lastName" class="form-control" placeholder="Last name" >
             <span class><?= isset($errors['lastName'])?$errors['lastName'] : ''?></span>
         </div>
         <div class="box6">
-            <input type="text" name="emailAdress" class="form-control" placeholder="Your Email" required>
+            <input type="text" name="emailAdress" class="form-control" placeholder="Your Email" >
             <span class><?= isset($errors['mail'])?$errors['mail'] : ''?></span>
         </div>
         <div class="box7">
@@ -49,11 +49,11 @@ $conn = openCon();
             <input type="text" name="message" class="form-control" placeholder="Message">
         </div>
         <div class="box9">
-            <input id="calendar" type="date" name="date" class="form-control" id="date" required>
+            <input id="calendar" type="date" name="date" class="form-control" id="date" >
             <span class><?= isset($errors['appDate'])?$errors['appDate'] : ''?></span>
         </div>
         <div class="box10">
-            <select id="time" name ="time" required>
+            <select id="time" name ="time" >
                 <span class><?= isset($errors['appTime'])?$errors['appTime'] : ''?></span>
                 <option value="">Pick your time</option>
                 <option value="10:00-10:15">10:00-10:15</option>

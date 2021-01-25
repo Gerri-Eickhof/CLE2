@@ -45,7 +45,7 @@ if (isset($_POST['submit'])) {
 
         //Sends you back to index after putting values into database.
         if ($result) {
-            //header('Location: index.php');
+            header('Location: index.php');
             exit;
         } else {
             $errors[] = 'Something went wrong in your database query: ' . mysqli_error($conn);
