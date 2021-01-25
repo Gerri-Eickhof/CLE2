@@ -24,7 +24,7 @@ $conn = openCon();
             <img id="logo" src="img/logo.png">
         </div>
         <div class="box2">
-            <h1>Create appointment</h1>
+            <h1>Create an appointment</h1>
         </div>
         <div class="box3">
             <img id="img" src="img/2.png" width="533,6" height="262,9">
