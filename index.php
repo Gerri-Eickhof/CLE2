@@ -132,21 +132,19 @@ $conn = openCon();
         <?php if (isset($_SESSION['loggedInUser'])) : ?>
             <a href="update.php"><strong>UPDATE APPOINTMENTS</strong></a>
         <?php endif; ?>
+        <?php if (!isset($_SESSION['loggedInUser'])) : ?>
+            <a href="login.php"><strong>ADMIN LOGIN</strong></a>
+        <?php endif; ?>
     </li>
     <li class="site-footer__linklist-item h6">
         <?php if (isset($_SESSION['loggedInUser'])) : ?>
             <a href="delete.php"><strong>DELETE APPOINTMENTS</strong></a>
         <?php endif; ?>
     </li>
-    <li>
+    <li class="site-footer__linklist-item h6">
     <?php if (isset($_SESSION['loggedInUser'])) : ?>
         <a href="logout.php"><strong>LOGOUT</strong></a>
     <?php endif; ?>
-    </li>
-    <li>
-        <?php if (!isset($_SESSION['loggedInUser'])) : ?>
-            <a href="login.php"><strong>ADMIN LOGIN</strong></a>
-        <?php endif; ?>
     </li>
 </footer>
 <script type="text/javascript" src="includes/myscript.js"></script>
