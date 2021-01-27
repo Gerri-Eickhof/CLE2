@@ -13,9 +13,9 @@ if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
 if (!isset($phone) || $phone == "") {
     $errors['phoneNumber'] = 'Phone number cannot be empty';
 }
-if ($date1 == "") {
+if (!isset($date1) || $date1 == "") {
     $errors['date'] = 'Date cannot be empty';
 }
-if ($appTime == "") {
+if (!isset($appTime) || $appTime == "") {
     $errors['time'] = 'Time cannot be empty';
 } ?>
