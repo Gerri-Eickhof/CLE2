@@ -143,6 +143,11 @@ $conn = openCon();
         <a href="logout.php"><strong>LOGOUT</strong></a>
     <?php endif; ?>
     </li>
+    <li>
+        <?php if (!isset($_SESSION['loggedInUser'])) : ?>
+            <a href="login.php"><strong>ADMIN LOGIN</strong></a>
+        <?php endif; ?>
+    </li>
 </footer>
 <script type="text/javascript" src="includes/myscript.js"></script>
 </body>
