@@ -47,7 +47,7 @@ function sendMail() {
                 )
             );
             $mail->Username = 'indihelene@gmail.com';
-            $mail->Password = 'bigchungus13';
+            $mail->Password = '';
 
             // mail from, where to and reply email (cc and bcc can be used when removing //
             $mail->setFrom('indihelen@gmail.com');
