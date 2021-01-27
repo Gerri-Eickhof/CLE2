@@ -30,6 +30,8 @@ if (isset($_POST['submit'])) {
     $appDate = strtotime($_POST['date']);
     $appDate = date('Y-m-d', $appDate);
 
+    require_once "includes/form-validation.php";
+
     //Make array so the form won't break.
     $appointment = [
         'firstName' => $firstName,
@@ -104,8 +106,7 @@ mysqli_close($conn);
     </div>
     <div>
         <label for="appDate">Date</label>
-        <input id="calendar" type="date" name="date" class="form-control" id="date" required
-               value="<?= htmlentities($app['appDate']); ?>">
+        <input id="calendar" type="date" name="date" class="form-control" id="date" value="<?= htmlentities($app['appDate']); ?>">
     </div>
     <div>
         <select id="appTime" name="appTime" required>

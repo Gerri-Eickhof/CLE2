@@ -65,7 +65,7 @@ $conn = openCon();
     <link rel="stylesheet" type="text/css" href="includes/style.css">
 </head>
 <body>
-<form id="contact-form" method="post" action="create.php">
+<form id="contact-form" method="post" action="">
     <div id="content">
         <div class="box1">
             <img id="logo" src="img/logo.png">
