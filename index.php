@@ -1,15 +1,62 @@
 <?php
 include 'includes/config.php';
 require "includes/common.php";
+require_once "php-mailer.php";
 
 session_start();
 
-//Checks if CSRF is set.
-if (isset($_POST['submit'])) {
-    if (!hash_equals($_SESSION['csrf'], $_POST['csrf'])) die(); }
-
 //Opens connection to database.
 $conn = openCon();
+
+if (!isset($_SESSION)) {
+    session_start();
+}
+//Checks if submit isset, starts create process if true.
+if (isset($_POST['submit'])) {
+
+    //Makes a new array with the posted information.
+    $firstName = htmlspecialchars($_POST['firstName']);
+    $firstName = mysqli_escape_string($conn, trim($firstName));
+    $lastName = htmlspecialchars($_POST['lastName']);
+    $lastname = mysqli_real_escape_string($conn, trim($lastName));
+    $email = htmlspecialchars($_POST['emailAdress']);
+    $email = mysqli_real_escape_string($conn, trim($email));
+    $phone = htmlspecialchars($_POST['phoneNumber']);
+    $phone = mysqli_real_escape_string($conn, trim($phone));
+    $message = htmlspecialchars($_POST['message']);
+    $message = mysqli_real_escape_string($conn, trim($message));
+    $date1 = htmlspecialchars($_POST['date']);
+    $date1 = mysqli_real_escape_string($conn, trim($date1));
+    $appTime = htmlspecialchars($_POST['time']);
+    $time = mysqli_real_escape_string($conn, trim($appTime));
+
+    require_once "includes/form-validation.php";
+    //Checks if there is no errors (form validation).
+    if (empty($errors)) {
+        $date1 = strtotime($date1);
+        $date1 = date('Y-m-d', $date1);
+
+        //Adds array to database.
+        $sql = "INSERT INTO test
+                  (firstName, lastName, mail, phoneNumber, msG, appDate, appTime)
+                  VALUES ('$firstName', '$lastName', '$email', '$phone', '$message', '$date1', '$appTime')";
+        $result = mysqli_query($conn, $sql) or die ('Error: ' . $sql . '<br>' . mysqli_error($conn));
+        sentMail();
+
+        //Sends you back to index after putting values into database.
+        if ($result) {
+            header('Location: index.php');
+            exit;
+        } else {
+            $errors[] = 'Something went wrong in your database query: ' . mysqli_error($conn);
+        }
+    }
+}
+//Opens connection to database
+$conn = openCon();
+
+//Checks if there is data submitted, starts the updating process.
+
 ?>
 
 <html lang="en">
@@ -49,17 +96,17 @@ $conn = openCon();
             <input type="text" name="message" class="form-control" placeholder="Message">
         </div>
         <div class="box9">
-            <input id="calendar" type="date" name="date" class="form-control" id="date" >
-            <span class><?= isset($errors['appDate'])?$errors['appDate'] : ''?></span>
+            <input id="calendar" type="date" name="date" class="form-control"  >
+            <span class><?= isset($errors['date'])?$errors['date'] : ''?></span>
         </div>
         <div class="box10">
-            <select id="time" name ="time" >
-                <span class><?= isset($errors['appTime'])?$errors['appTime'] : ''?></span>
+            <select id="time" name ="time" class="form-control">
                 <option value="">Pick your time</option>
                 <option value="10:00-10:15">10:00-10:15</option>
                 <option value="14:00-14:15">14:00-14:15</option>
                 <option value="20:00-20:15">20:00-20:15</option>
             </select>
+            <span class><?= isset($errors['time'])?$errors['time'] : ''?></span>
         </div>
         <div class="box11">
             <img id="img" src="img/3.png" width="533,6" height="262,9">

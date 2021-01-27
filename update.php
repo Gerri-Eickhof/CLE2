@@ -13,10 +13,6 @@ if (!isset($_SESSION['loggedInUser'])) {
 require "includes/config.php";
 require "includes/common.php";
 
-//Checks if CSRF key is set
-if (isset($_POST['submit'])) {
-    if (!hash_equals($_SESSION['csrf'], $_POST['csrf'])) die();
-}
 //Opens connection to database
 $conn = openCon();
 //Selects all entries from database.
