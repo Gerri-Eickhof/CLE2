@@ -16,7 +16,7 @@ if (isset($_POST['submit'])) {
 
     //Makes a new array with the posted information.
     $firstName = htmlspecialchars($_POST['firstName']);
-    $firstName = mysqli_escape_string($conn, trim($firstName));
+    $firstName = mysqli_real_escape_string($conn, trim($firstName));
     $lastName = htmlspecialchars($_POST['lastName']);
     $lastname = mysqli_real_escape_string($conn, trim($lastName));
     $email = htmlspecialchars($_POST['emailAdress']);
@@ -142,6 +142,11 @@ $conn = openCon();
         <?php if (isset($_SESSION['loggedInUser'])) : ?>
             <a href="delete.php"><strong>DELETE APPOINTMENTS</strong></a>
         <?php endif; ?>
+    </li>
+    <li>
+    <?php if (isset($_SESSION['loggedInUser'])) : ?>
+        <a href="logout.php"><strong>LOGOUT</strong></a>
+    <?php endif; ?>
     </li>
 </footer>
 <script type="text/javascript" src="includes/myscript.js"></script>

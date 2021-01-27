@@ -44,10 +44,10 @@ try {
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>delete-page</title>
+    <title>Delete Appointments</title>
     <link rel="stylesheet" type="text/css" href="includes/style.css">
 </head>
-<h2 class="centerhead">Delete users</h2><br><br>
+<h2 class="centerhead">Delete Appointments</h2><br><br>
 
 <div class="tablediv">
 <table class="container">

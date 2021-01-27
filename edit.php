@@ -75,7 +75,7 @@ mysqli_close($conn);
 <!doctype html>
 <html lang="en">
 <head>
-    <title>Music Collection Edit</title>
+    <title>Edit Appointments</title>
     <meta charset="utf-8"/>
     <link rel="stylesheet" type="text/css" href="includes/style.css"/>
 </head>
@@ -83,7 +83,7 @@ mysqli_close($conn);
 <h1>Edit Appointment</h1>
 
 <form action="" method="post" enctype="multipart/form-data">
-    <label for="artist">Artiest</label>
+    <label for="artist">Afspraak</label>
     <div class="data-field">
         <label for="firstName">First Name</label>
         <input id="firstName" type="text" name="firstName" value="<?= htmlentities($app['firstName']); ?>"/>

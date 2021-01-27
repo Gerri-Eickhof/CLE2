@@ -47,7 +47,7 @@ if (isset($_POST['submit'])) {
 <!doctype html>
 <html lang="en">
 <head>
-    <title>Music Collection Login</title>
+    <title>Admin Login</title>
     <meta charset="utf-8"/>
     <link rel="stylesheet" type="text/css" href="includes/style.css"/>
 </head>

@@ -26,7 +26,7 @@ $result = mysqli_query($conn, $sql) or die ('Error: ' . $sql . '<br>' . mysqli_e
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>update-page</title>
+    <title>View Appointments</title>
     <link rel="stylesheet" type="text/css" href="includes/style.css">
 </head>
 <h2 class="centerhead">Update users</h2><br><br>
