@@ -1,7 +1,7 @@
 <?php
 include 'includes/config.php';
 require "includes/common.php";
-require_once "php-mailer.php";
+require_once "includes/php-mailer.php";
 
 session_start();
 
