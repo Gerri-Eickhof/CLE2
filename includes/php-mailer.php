@@ -11,8 +11,8 @@ require 'PHPMailer/src/Exception.php';
 require 'PHPMailer/src/PHPMailer.php';
 require 'PHPMailer/src/SMTP.php';
 
-function sentMail() {
-        //making variables of the checked input
+function sendMail() {
+        //Turning input into variables.
         $firstname  = mysqli_escape_string($GLOBALS['conn'], $_POST['firstName']);
         $lastname   = mysqli_escape_string($GLOBALS['conn'], $_POST['lastName']);
         $email      = mysqli_escape_string($GLOBALS['conn'], $_POST['emailAdress']);
@@ -38,6 +38,7 @@ function sentMail() {
             $mail->Port = 587;
             $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
             $mail->SMTPAuth = true;
+            //Extra SMTP options (DOES NOT WORK IF REMOVED)
             $mail->SMTPOptions = array(
                 'ssl' => array(
                     'verify_peer' => false,
@@ -50,7 +51,7 @@ function sentMail() {
 
             // mail from, where to and reply email (cc and bcc can be used when removing //
             $mail->setFrom('indihelen@gmail.com');
-            $mail->addAddress('luc.karlas@gmail.com', $firstname . " " . $lastname);
+            $mail->addAddress($email, $firstname . " " . $lastname);
             $mail->addReplyTo('indihelene@gmail.com');
             //$mail->addCC('');
             //$mail->addBCC('');

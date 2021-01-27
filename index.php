@@ -8,9 +8,6 @@ session_start();
 //Opens connection to database.
 $conn = openCon();
 
-if (!isset($_SESSION)) {
-    session_start();
-}
 //Checks if submit isset, starts create process if true.
 if (isset($_POST['submit'])) {
 
@@ -41,7 +38,7 @@ if (isset($_POST['submit'])) {
                   (firstName, lastName, mail, phoneNumber, msG, appDate, appTime)
                   VALUES ('$firstName', '$lastName', '$email', '$phone', '$message', '$date1', '$appTime')";
         $result = mysqli_query($conn, $sql) or die ('Error: ' . $sql . '<br>' . mysqli_error($conn));
-        sentMail();
+        sendMail();
 
         //Sends you back to index after putting values into database.
         if ($result) {
@@ -54,8 +51,6 @@ if (isset($_POST['submit'])) {
 }
 //Opens connection to database
 $conn = openCon();
-
-//Checks if there is data submitted, starts the updating process.
 
 ?>
 
