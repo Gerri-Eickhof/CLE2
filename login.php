@@ -13,7 +13,7 @@ if (isset($_SESSION['loggedInUser'])) {
 if (isset($_POST['submit'])) {
     //Retrieve values (email safe for query)
     $email = mysqli_escape_string($conn, $_POST['email']);
-    $password = $_POST['password'];
+    $password = mysqli_escape_string($conn, $_POST['password']);
 
     //Get password & name from DB
     $sql = "SELECT *
